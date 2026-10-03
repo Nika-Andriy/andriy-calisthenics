@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #09090b;
+  --foreground: #f4f4f5;
+}
+
+/* iOS PWA Specific Reset & Optimizations */
+html {
+  background-color: #09090b;
+  color: #f4f4f5;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  overscroll-behavior-y: none;
+}
+
+/* Allow text selection inside inputs and textareas */
+input, textarea, [contenteditable="true"] {
+  user-select: text;
+  -webkit-user-select: text;
+  font-size: 16px !important; /* CRITICAL: Prevents iOS Safari from auto-zooming on input focus */
+}
+
+body {
+  background-color: #09090b;
+  color: #f4f4f5;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+  overflow-x: hidden;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+/* Safe Area Utility Classes for iPhone Notch, Island, and Home Indicator */
+.pt-safe {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.pl-safe {
+  padding-left: env(safe-area-inset-left, 0px);
+}
+
+.pr-safe {
+  padding-right: env(safe-area-inset-right, 0px);
+}
+
+/* Hide standard scrollbars for native iOS feel */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* iOS Spring Glass Style */
+.ios-glass {
+  background: rgba(18, 18, 22, 0.78);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(39, 39, 42, 0.6);
+}
+
+.ios-glass-card {
+  background: rgba(24, 24, 27, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(63, 63, 70, 0.35);
+}
+
+/* Active touch feedback */
+.ios-tap {
+  transition: transform 0.12s ease, opacity 0.12s ease;
+}
+.ios-tap:active {
+  transform: scale(0.97);
+  opacity: 0.88;
+}
